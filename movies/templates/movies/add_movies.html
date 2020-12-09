@@ -1,0 +1,64 @@
+{% extends 'movies/base.html' %}
+{% block title %}Add Movies{% endblock %}
+{% block add_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Add Movies</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'movies:add_movies' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_name">
+                                Movie Name:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_name" maxlength="30" name="movie_name" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_desc">
+                                Description:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_desc" maxlength="30" name="desc" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_director">
+                                Director:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_director" maxlength="30" name="director" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_duration">
+                                Duration:
+                            </label>
+                            <div class="col-sm-10">
+                                <input id="id_duration" maxlength="30" name="duration" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
